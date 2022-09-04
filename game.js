@@ -8,8 +8,8 @@ var status = document.getElementById("status");
 var scoreDiv = document.querySelector("div.boundary.example");
 var user;
 var score=0;
-
 var timer;
+var excute=0;
 
 start.onmouseover = function() {mouseOverStart()};
 end.onmouseover = function() {mouseOverEnd()};
@@ -36,7 +36,7 @@ function mouseOverStart() {
    for (let i = 0; i < redDiv.length; i++) {
    redDiv[i].style.backgroundColor = "#eeeeee";
  }
-  
+  excute=1;
   	
 }
 
@@ -44,6 +44,7 @@ function mouseOverStart() {
 
 function onclickStart() {
  var time=0;
+ excute=1
  for (let i = 0; i < redDiv.length; i++) {
    redDiv[i].style.backgroundColor = "#eeeeee";
  } 
@@ -53,7 +54,7 @@ function onclickStart() {
    
    timer = setInterval(function(){
      
-    if(time == 59){
+    if(time == 2){
       clearInterval(timer);
        
     }
@@ -66,12 +67,17 @@ function onclickStart() {
 }
 
 function mouseOverEnd() {
+if(excute==0){
 
+return ;
+}
+else{
    status.innerHTML = "YOU WIN:) SCORE +10";
    scoreDiv.innerHTML= score+=10;
    scoreDiv.style.textAlign = "center";
    localStorage.setItem("scoreSaved", score);
-
+   excute=0;
+}
 }
 
 function userName() {
