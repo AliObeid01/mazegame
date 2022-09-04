@@ -7,7 +7,7 @@ var end = document.getElementById("end");
 var status = document.getElementById("status");
 var scoreDiv = document.querySelector("div.boundary.example");
 var score=0;
-
+var user;
 
 start.onmouseover = function() {mouseOverStart()};
 end.onmouseover = function() {mouseOverEnd()};
@@ -33,7 +33,7 @@ function mouseOverStart() {
    for (let i = 0; i < redDiv.length; i++) {
    redDiv[i].style.backgroundColor = "#eeeeee";
  }
-  status.innerHTML = "Begin by moving your mouse over the ''S''.";
+  status.innerHTML = "Start or press S to reset.";
 
 }
 
@@ -42,20 +42,31 @@ function onclickStart() {
  for (let i = 0; i < redDiv.length; i++) {
    redDiv[i].style.backgroundColor = "#eeeeee";
  } 
-   status.innerHTML = "Begin by moving your mouse over the ''S''.";
+   status.innerHTML = "Lets Start again";
    scoreDiv.innerHTML= score=0;
    scoreDiv.style.textAlign = "center";
+   
    
 }
 
 function mouseOverEnd() {
 
-   status.innerHTML = "YOU WIN:) SCORE +10";
+   status.innerHTML = "YOU WIN:) SCORE +100";
    scoreDiv.innerHTML= score+=10;
    scoreDiv.style.textAlign = "center";
+   localStorage.setItem("scoreSaved", score);
 
 }
 
-   console.log('DOM fully loaded and parsed');
+function userName() {
+  user = prompt("Please enter your name");
+  localStorage.setItem("username", user);
+  if (user == localStorage.getItem("username")) {
+    status.innerHTML =
+    "Hello " + localStorage.getItem("username") + "! Your last Score is " + localStorage.getItem("scoreSaved", score)+ "! Try to beat it ;) ";
+  }}
+
+   
+   userName();
 });
 
