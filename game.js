@@ -64,7 +64,7 @@ function onclickStart() {
    
   timer = setInterval(function(){
      
-    if(time == 10){
+    if(time == 59){
       clearInterval(timer);
       status.innerHTML = "Time End.Press start to try again.";
       excuteEnd=0;
